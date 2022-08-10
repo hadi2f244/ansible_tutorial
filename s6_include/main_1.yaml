@@ -1,0 +1,9 @@
+- name: Play Ping on all targets
+  hosts: all
+  become: true
+  gather_facts: true
+  vars_files:
+    - vars_2.yaml
+  tasks:
+    - name: include inner_tasks.yaml
+      include: inner_tasks.yaml

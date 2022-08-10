@@ -1,0 +1,15 @@
+- name: Play Ping on all targets
+  hosts: all
+  become: true
+  gather_facts: true
+  tasks:
+    - name: file lookup
+      debug:
+        msg: "{{ lookup('file', './hosts', errors='ignore') }}"
+    - name: dig lookup
+      debug:
+        msg: "{{ lookup('community.general.dig', 'google.com') }}"
+    - name: env lookup
+      debug:
+        msg: "{{ lookup('env', 'USER') }}"
+

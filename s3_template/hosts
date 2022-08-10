@@ -1,0 +1,8 @@
+---
+
+all:
+  hosts:
+    node-1:
+      ansible_host: 192.168.50.11
+    node_none: 
+      ansible_host: fe80::100

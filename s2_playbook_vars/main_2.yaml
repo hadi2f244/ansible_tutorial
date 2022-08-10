@@ -1,0 +1,10 @@
+- name: Play Ping on all targets
+  hosts: all
+  become: true
+  gather_facts: true
+  vars_files:
+    - vars_2.yaml
+  tasks:
+    - name: Log a variable
+      debug:
+        msg: "{{ var1 }}"

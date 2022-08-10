@@ -1,0 +1,4 @@
+---
+
+groupvar1: "group variable"
+var2: "set in group_vars"

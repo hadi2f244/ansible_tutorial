@@ -1,0 +1,24 @@
+---
+- name: Verify apache installation
+  hosts: all
+  become: true
+  gather_facts: true
+  tasks:
+    - name: Ensure apache is at the latest version
+      debug:
+        msg: "task 1"
+
+    - name: Write the apache config file
+      debug:
+        msg: task 2
+      notify:
+      - Restart apache
+
+    - name: Ensure apache is running
+      debug:
+        msg: task 3 
+
+  handlers:
+    - name: Restart apache
+      debug:
+        msg: handler 1

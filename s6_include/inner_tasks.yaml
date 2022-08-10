@@ -1,0 +1,4 @@
+---
+- name: Log a variable
+  debug:
+    msg: "{{ var1 }}"

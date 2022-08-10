@@ -1,0 +1,18 @@
+- name: Play Ping on all targets
+  hosts: all
+  become: true
+  gather_facts: true
+  tasks:
+    - name: task 1
+      debug:
+        msg: "task 1 run"
+      notify: 
+        - Restart apache
+    - name: task 2
+      debug:
+        msg: "task 2 run"
+  handlers:
+    - name: Restart apache
+      debug:
+        msg: "handler 1"
+      static: yes

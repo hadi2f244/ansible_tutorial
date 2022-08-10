@@ -1,0 +1,7 @@
+---
+- name: set_fact    
+  set_fact:
+    condition_var: false
+- name: Inner Logging 
+  debug:
+    msg: "Inner Logging .... "

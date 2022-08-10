@@ -1,0 +1,17 @@
+- name: Play Ping on all targets
+  hosts: all
+  become: true
+  gather_facts: true
+  tasks:
+    - name: reset condition_var
+      set_fact:
+        condition_var: true 
+    - include_tasks: include_import.yaml
+      when: "{{ condition_var }}"
+
+    - name: reset condition_var
+      set_fact:
+        condition_var: true
+    - import_tasks: include_import.yaml
+      when: "{{ condition_var }}"
+

@@ -1,0 +1,19 @@
+---
+- name: task 1 | print variables
+  debug:
+    msg: "{{ var1 }}"
+- name: task 2 | argument
+  debug:
+    msg: "{{ arg_var1 }}"
+
+- name: task 3 | copy a file
+  copy:
+    src: test.txt
+    dest: "{{ dst_path }}"
+    mode: 0644
+  notify: handler 1
+
+- name: task 4 | render template
+  template:
+    src: test_template.txt.j2
+    dest: "{{ dst_path }}/test_template.txt"

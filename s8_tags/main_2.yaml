@@ -1,0 +1,9 @@
+- name: Play Ping on all targets
+  hosts: all
+  become: true
+  gather_facts: true
+  vars:
+    - var1: "test string"
+  roles:
+    - {role: myrole3, run_task2: false }
+

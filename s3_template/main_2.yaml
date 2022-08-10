@@ -1,0 +1,16 @@
+- name: Play Ping on all targets
+  hosts: all
+  become: true
+  gather_facts: false
+  vars:
+    - var1: "test string"
+  tasks:
+    - name: if statements 
+      debug:
+        msg: >
+          Check if ip is valid 
+          {% if ansible_host | ipv4 %}
+            Valid ipv4: {{ansible_host}}
+          {% else %}
+            Invalid Ipv4!!!! ({{ ansible_host }})
+          {% endif %}

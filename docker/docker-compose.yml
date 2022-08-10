@@ -1,0 +1,21 @@
+networks:
+  hfnet:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.50.0/24
+          gateway: 192.168.50.1
+
+services:
+  os:
+    image: 'kilip/molecule-ubuntu:18.04'
+    command: "sleep 10000000000000"
+#    stdin_open: true
+#    tty: true        
+    networks:
+      hfnet:
+        ipv4_address: 192.168.50.11
+    ports:
+      - '2211:22'
+

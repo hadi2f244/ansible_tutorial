@@ -1,0 +1,8 @@
+- name: Play Ping on all targets
+  hosts: all
+  become: true
+  gather_facts: true
+  tasks:
+    - name: Log inventory_hostname
+      debug:
+        msg: "{{ inventory_hostname }}"

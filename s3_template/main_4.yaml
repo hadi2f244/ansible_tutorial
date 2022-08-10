@@ -1,0 +1,17 @@
+- name: Play Ping on all targets
+  hosts: all
+  become: true
+  gather_facts: false
+  vars:
+    - var1: "test string"
+  tasks:
+    - name: set a list
+      set_fact: 
+        test_list: [1,2,3]
+
+    - name: use template module
+      template:
+        src: basic_template.txt.j2
+        dest: "/tmp/basic_template.txt"
+      delegate_to: localhost
+      become: false

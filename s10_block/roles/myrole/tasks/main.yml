@@ -1,0 +1,26 @@
+---
+
+- name: install nginx
+  block:
+    - name: Update apt repo and cache on Debian/Ubuntu boxes
+      apt:
+        update_cache: yes
+        force_apt_get: yes
+    - name: Install Nginx
+      apt:
+        name: "nginx"
+        state: present
+        update_cache: 'yes'
+    - name: Restart Nginx
+      service:
+        name: nginx
+        state: restarted
+        enabled: true
+  rescue:
+    - name: Make sure nginx is removed on error
+      apt:
+        name: "nginx"
+        state: absent
+    - name: Make sure nginx is removed on error
+      fail:
+        msg: "Issue on installing nginx"

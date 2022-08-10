@@ -1,0 +1,4 @@
+---
+- name: Inner Logging 
+  debug:
+    msg: "Inner Logging : {{item }} "

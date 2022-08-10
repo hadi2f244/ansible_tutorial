@@ -1,0 +1,10 @@
+---
+
+all:
+  hosts:
+    node-1:
+      ansible_host: 192.168.50.11
+  children:
+    test:
+      hosts:
+        node-1:

@@ -1,0 +1,9 @@
+argument_specs:
+  test:
+    short_description: just for test
+    options:
+      arg_var1:
+        type: "str"
+        required: true
+        description: "test1"
+

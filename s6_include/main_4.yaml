@@ -1,0 +1,10 @@
+- name: Play Ping on all targets
+  hosts: all
+  become: true
+  gather_facts: true
+  tasks:
+    - include_tasks: include_loop.yaml
+      loop: 
+        - 1
+        - 2
+

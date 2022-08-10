@@ -1,0 +1,4 @@
+---
+- name: handler 1
+  debug:
+    msg: "handler 1 run"

@@ -1,0 +1,8 @@
+---
+- name: task 1
+  debug:
+    msg: "task1 run"
+- name: task 2
+  debug:
+    msg: "task2 run"
+  when: run_task2

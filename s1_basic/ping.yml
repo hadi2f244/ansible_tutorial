@@ -1,0 +1,11 @@
+- name: Play Ping on all targets
+  hosts: all
+  become: true
+  gather_facts: true
+  tasks:
+    - name: Ping targets
+      ping:
+      register: ping_output
+    - name: Log ping tasks
+      debug:
+        msg: "{{ping_output}}"

@@ -1,0 +1,14 @@
+- name: Play Ping on all targets
+  hosts: all
+  become: true
+  gather_facts: true
+  tasks:
+    - name: Log group_vars variable
+      debug:
+        msg: "{{ groupvar1 }}"
+    - name: Log host_vars variable
+      debug:
+        msg: "{{ hostvar1 }}"
+    - name: variable precedence
+      debug:
+        msg: "{{ var2 }}"

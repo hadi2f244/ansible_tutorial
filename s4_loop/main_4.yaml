@@ -1,0 +1,26 @@
+- name: Play Ping on all targets
+  hosts: all
+  become: true
+  gather_facts: false
+  tasks:
+    - name: define lists
+      set_fact:
+        x:
+          a: 1
+          b: 2
+    - name: print by with_items
+      debug: 
+        msg: "{{ example_item_1 }}"
+      with_items: "{{ x }}"
+      loop_control:
+        loop_var: example_item_1 
+    # with_items = loop + flatten
+    - name: print flatten x
+      debug: 
+        msg: "{{ x | flatten(1) }}"
+    - name: print by loop directive 
+      debug:
+        msg: "{{ example_item_2 }}" 
+      loop: "{{ x | flatten(1) }}"
+      loop_control:
+        loop_var: example_item_2

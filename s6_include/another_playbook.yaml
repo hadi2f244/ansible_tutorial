@@ -1,0 +1,9 @@
+- name: Play Ping on all targets
+  hosts: all
+  become: true
+  gather_facts: true
+  tasks:
+    - name: another simple log
+      debug:
+        msg: "another simple log"
+

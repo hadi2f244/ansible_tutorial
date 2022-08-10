@@ -1,0 +1,19 @@
+- name: Play Ping on all targets
+  hosts: all
+  become: true
+  gather_facts: false
+  tasks:
+    - name: define lists
+      set_fact:
+        list1: [1,2,3]
+        list2: ['a','b','c'] 
+    # with_together = loop + zip
+    - name: print zipped lists
+      debug: 
+        msg: "{{ list1 | zip(list2) }}"
+    - name: print lists together 
+      debug:
+        msg: "{{ example_item.0 }} --> {{ example_item.1 }}" 
+      loop: "{{ list1|zip(list2) }}"
+      loop_control:
+        loop_var: example_item 

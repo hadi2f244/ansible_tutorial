@@ -1,0 +1,4 @@
+---
+
+hostvar1: "test var"
+var2: "replaced in host_vars"

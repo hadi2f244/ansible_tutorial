@@ -1,0 +1,23 @@
+- name: Play Ping on all targets
+  hosts: all
+  become: true
+  gather_facts: false
+  vars:
+    - var1: "test string"
+  tasks:
+    - name: set a list
+      set_fact: 
+        test_list: [1,2,3]
+
+    - name: print the list
+      debug:
+        msg: > 
+          {% for i in test_list %} I am {{i}}! {% endfor %}
+
+    - name: print hostvars | Why it is much less than before ?!!! (gather_facts = false)
+      debug:
+        msg: >
+          host IPs: 
+          {% for host in groups['all'] %}
+            {{ hostvars[host] }}
+          {% endfor %}

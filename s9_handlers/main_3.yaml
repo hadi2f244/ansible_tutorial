@@ -1,0 +1,12 @@
+- name: Play Ping on all targets
+  hosts: all
+  become: true
+  gather_facts: true
+  tasks:
+    - name: Log hostvars
+      debug:
+        msg: "{{ hostvars }}"
+    - name: Log server ips
+      debug:
+        msg: "{{ hostvars[inventory_hostname].ansible_all_ipv4_addresses }}"
+

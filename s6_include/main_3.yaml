@@ -1,0 +1,11 @@
+- name: Play Ping on all targets
+  hosts: all
+  become: true
+  gather_facts: true
+  tasks:
+    - name: simple log
+      debug:
+        msg: "simple log"
+- import_playbook: another_playbook.yaml
+
+

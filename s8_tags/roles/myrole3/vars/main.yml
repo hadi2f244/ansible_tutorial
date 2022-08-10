@@ -1,0 +1,5 @@
+---
+var1: "test var"
+dst_path: "/home/{{ansible_custom_user}}"
+
+run_task2: false

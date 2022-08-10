@@ -1,0 +1,10 @@
+- name: Play Ping on all targets
+  hosts: all
+  become: true
+  gather_facts: true
+  vars:
+    - var1: "test string"
+  tasks:
+    - name: Log ping tasks
+      debug:
+        msg: "{{ var1 }}"

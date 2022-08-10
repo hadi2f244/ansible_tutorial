@@ -1,0 +1,12 @@
+- name: Play Ping on all targets
+  hosts: all
+  become: true
+  gather_facts: true
+  vars:
+    - var1: "test string"
+  tasks:
+    - name: Simple template 
+      debug:
+        msg: >
+          Just a template testing 
+            to print a variable value {{ ansible_host }}

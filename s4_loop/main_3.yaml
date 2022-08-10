@@ -1,0 +1,14 @@
+- name: Play Ping on all targets
+  hosts: all
+  become: true
+  gather_facts: false
+  tasks:
+    - name: with_items exampel 
+      debug:
+        msg: "{{ item.key }} --> {{ item.value.first_key }}" 
+      with_dict:
+        a:
+          first_key: 1
+        b:
+          first_key: 2
+

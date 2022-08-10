@@ -1,0 +1,16 @@
+- name: Play Ping on all targets
+  hosts: all
+  become: true
+  gather_facts: false
+  tasks:
+    - name: Define List
+      set_fact:
+        mylist: 
+          - 1
+          - 2
+          - 3
+    - name: with_items exampel 
+      debug:
+        msg: "{{ item }}"
+      with_items: "{{ mylist }}"
+
