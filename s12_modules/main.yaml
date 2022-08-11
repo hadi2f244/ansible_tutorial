@@ -1,0 +1,62 @@
+- name: Play Ping on all targets
+  hosts: all
+  become: true
+  gather_facts: true
+  tasks:
+    - name: shell
+      shell:
+        cmd: "ls -l "
+      register: shell_output
+    - name: print shell_output
+      debug:
+        msg: "{{ shell_output }}"
+
+######
+    - name: Update apt repo and cache on Debian/Ubuntu boxes
+      apt:
+        update_cache: yes
+        force_apt_get: yes
+    - name: Install Nginx
+      apt:
+        name: "nginx"
+        state: present
+        update_cache: 'yes'
+    - name: Restart Nginx
+      service:
+        name: nginx
+        state: restarted
+        enabled: true
+#######
+
+    - name: create test_dir
+      file:
+        path: "/home/vagrant/test_dir"
+        mode: 0755
+        state: directory
+        recurse: true
+
+    - name: create test_dir/test.txt
+      file:
+        path: "/home/vagrant/test_dir/test.txt"
+        mode: 0755
+        owner: vagrant
+        group: vagrant
+        state: touch
+
+#######
+    - name: add test text to test.txt
+      blockinfile:
+        path: "/home/vagrant/test_dir/test.txt"
+        block: |
+          this is
+          a test text
+
+#######
+    - name: Reboot the box
+      reboot:
+        msg: "Reboot the box"
+        connect_timeout: 5
+        reboot_timeout: 300
+        pre_reboot_delay: 0
+        post_reboot_delay: 30 # Todo: Update according to the server boot time
+        test_command: uptime
